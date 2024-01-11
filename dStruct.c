@@ -83,3 +83,14 @@ void dStruct_setCputimeByPid(dStruct* ds, int pid, float cputime) {
         entry->cputime = cputime;
     }
 }
+
+void dStruct_printAllEntries(const dStruct* ds) {
+    printf("All Entries:\n");
+    dStructEntry* current = ds->head;
+    while (current != NULL) {
+        printf("PID: %d, Status: %d, Niceness: %d, Cputime: %.2f, ProcTime: %.2f\n",
+               current->pid, current->status, current->niceness,
+               current->cputime, current->procTime);
+        current = current->next;
+    }
+}
